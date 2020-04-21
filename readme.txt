@@ -16,7 +16,7 @@ Holiday Logo Switcher provides you a way to display a different logo depending o
 1. Alternatively, you can download the plugin from [here](https://njohnson.pro/plugins/holiday-logo-switcher) and upload manually.
 1. Activate the plugin through the 'Plugins' screen in WordPress.
 
-## How it works
+== How it works ==
 
 1. In Settings > Holiday Logo Switcher, you have the possibility to set a default logo to display if you don't have any holiday at the moment.
 1. In the Holiday Logos menu, you can just add a logo by clicking Add New. After that, just configure your date range (from DD/MM/YYYY to DD/MM/YY) and click on Save.
