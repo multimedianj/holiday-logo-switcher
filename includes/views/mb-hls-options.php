@@ -63,11 +63,11 @@ function logo_options_save( $post_id ) {
 	if ( ! current_user_can( 'edit_post', $post_id ) ) return;
 
 	if ( isset( $_POST['logo_options_from_date_'] ) )
-		update_post_meta( $post_id, 'logo_options_from_date_', esc_attr( $_POST['logo_options_from_date_'] ) );
+		update_post_meta( $post_id, 'logo_options_from_date_', sanitize_text_field( $_POST['logo_options_from_date_'] ) );
 	if ( isset( $_POST['logo_options_to_date_'] ) )
-		update_post_meta( $post_id, 'logo_options_to_date_', esc_attr( $_POST['logo_options_to_date_'] ) );
+		update_post_meta( $post_id, 'logo_options_to_date_', sanitize_text_field( $_POST['logo_options_to_date_'] ) );
 	if ( isset( $_POST['logo_options_image_alt'] ) )
-		update_post_meta( $post_id, 'logo_options_image_alt', esc_attr( $_POST['logo_options_image_alt'] ) );
+		update_post_meta( $post_id, 'logo_options_image_alt', sanitize_text_field( $_POST['logo_options_image_alt'] ) );
 }
 add_action( 'save_post', 'logo_options_save' );
 
