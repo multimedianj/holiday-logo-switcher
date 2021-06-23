@@ -3,7 +3,7 @@
  * Holiday Logo Switcher
  * 
  * By Nicolas Johnson - 2021
- * https://wpinclusion.com/plugins
+ * https://wpinclusion.com
  * 
  */
 
@@ -40,8 +40,8 @@ class Holiday_Logo_Switcher {
 	 */
 	public function define_hooks() {
 		add_action( 'init', array( $this, 'holiday_logos' ), 0 );
-		add_action( 'init', array( $this, 'hls_meta_boxes' ) );
-		add_shortcode( 'hls', array( $this, 'hls_shortcode' ) );
+		add_action( 'init', array( $this, 'whls_meta_boxes' ) );
+		add_shortcode( 'hls', array( $this, 'whls_shortcode' ) );
 	}
 
 	/**
@@ -54,14 +54,14 @@ class Holiday_Logo_Switcher {
 	/**
 	 * Meta boxes
 	 */
-	public function hls_meta_boxes() {
+	public function whls_meta_boxes() {
 		include( dirname( __FILE__ ) . '/../views/mb-hls-options.php' );
 	}
 
 	/**
 	 * Shortcode that displays holiday logo
 	 */
-	public function hls_shortcode() {
+	public function whls_shortcode() {
 		$args = array(
             'post_type' => 'holiday_logos',
             'post_status' => 'publish'
@@ -71,11 +71,11 @@ class Holiday_Logo_Switcher {
 		$query = new \WP_Query($args);
 		$img = '';
 
-		if ( get_option( 'hls_default_logo' ) ) {
-			$img = '<a href="' . get_home_url() . '" id="hls__logo"><img src="' . get_option( 'hls_default_logo' ) . '" alt="' . get_bloginfo() . '"/></a>';
+		if ( get_option( 'whls_default_logo' ) ) {
+			$img = '<a href="' . get_home_url() . '" id="whls__logo"><img src="' . get_option( 'whls_default_logo' ) . '" alt="' . get_bloginfo() . '"/></a>';
 		}
-		if ( get_option( 'hls_dark_logo' ) ) {
-			$img__dark = '<a href="' . get_home_url() . '" id="hls__logo-dark" style="display:none;"><img src="' . get_option( 'hls_dark_logo' ) . '" alt="' . get_bloginfo() . '"/></a>';
+		if ( get_option( 'whls_dark_logo' ) ) {
+			$img_dark = '<a href="' . get_home_url() . '" id="whls__logo-dark" style="display:none;"><img src="' . get_option( 'whls_dark_logo' ) . '" alt="' . get_bloginfo() . '"/></a>';
 		}
 		
         if ( $query->have_posts() ) {
@@ -91,19 +91,19 @@ class Holiday_Logo_Switcher {
 				$image_alt = get_post_meta( get_the_ID(), 'logo_options_image_alt', true );
 
 				if ( ($date_today >= $date_from) && ($date_today <= $date_to ) ) {
-					$img = '<a href="' . get_home_url() . '" id="hls__logo"><img src="' . get_the_post_thumbnail_url() . '" alt="' . $image_alt . '"/></a>';
+					$img = '<a href="' . get_home_url() . '" id="whls__logo"><img src="' . get_the_post_thumbnail_url() . '" alt="' . $image_alt . '"/></a>';
 				}
 			}
 		}
 		$result .= $img;
-		$result .= $img__dark;
+		$result .= $img_dark;
 
 		?>
 
 		<style>
-			body.iswpak_color_dark #hls__logo-dark { display: block !important; }
-			body.iswpak_color_dark #hls__logo-dark img { filter: none; }
-			body.iswpak_color_dark #hls__logo { display: none; }
+			body.iswpak_color_dark #whls__logo-dark { display: block !important; }
+			body.iswpak_color_dark #whls__logo-dark img { filter: none; }
+			body.iswpak_color_dark #whls__logo { display: none; }
 		</style>
 
 		<script>
@@ -158,22 +158,22 @@ class Holiday_Logo_Switcher {
 		);
 
 		add_settings_field(
-			'hls_default_logo',
+			'whls_default_logo',
 			__( 'Default logo', 'holiday-logo-switcher' ),
 			array( $this, 'default_logo_callback' ),
 			'ls_logo_switcher',
 			'ls_logo_switcher'
 		);
-		register_setting( 'ls_logo_switcher', 'hls_default_logo', array( 'type' => 'string' ) );
+		register_setting( 'ls_logo_switcher', 'whls_default_logo', array( 'type' => 'string' ) );
 
 		add_settings_field(
-			'hls_dark_logo',
+			'whls_dark_logo',
 			__( 'Dark mode logo', 'holiday-logo-switcher' ),
 			array( $this, 'dark_logo_callback' ),
 			'ls_logo_switcher',
 			'ls_logo_switcher'
 		);
-		register_setting( 'ls_logo_switcher', 'hls_dark_logo', array( 'type' => 'string' ) );
+		register_setting( 'ls_logo_switcher', 'whls_dark_logo', array( 'type' => 'string' ) );
 	}
 
 	/*
@@ -200,7 +200,7 @@ class Holiday_Logo_Switcher {
 	 * Plugin uninstall
 	 */
 	public static function uninstall() {
-		delete_option( 'hls_default_logo' );
-		delete_option( 'hls_dark_logo' );
+		delete_option( 'whls_default_logo' );
+		delete_option( 'whls_dark_logo' );
 	}
 }
