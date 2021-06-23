@@ -3,7 +3,7 @@ Contributors: multimedianj
 Tags: logo, logo switcher, replace logo, holiday, brand, dark mode
 Requires at least: 4.9
 Tested up to: 5.7.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 7.2
 License: GPLv3
 

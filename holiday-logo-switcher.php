@@ -3,8 +3,8 @@
  * Plugin Name: Holiday Logo Switcher
  * Plugin URI: https://wpinclusion.com/plugins/logo-switcher
  * Description: Display a different logo depending on the holiday.
- * Author: Nicolas Johnson
- * Version: 1.0.0
+ * Author: WP inclusion
+ * Version: 1.0.1
  * Author URI: https://wpinclusion.com
  * Text Domain: holiday-logo-switcher
  */

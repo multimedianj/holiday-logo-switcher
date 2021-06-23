@@ -8,6 +8,9 @@
     <p>
         <?php _e( 'Manage your logos to display at the desired holidays.', 'holiday-logo-switcher' ); ?>
     </p>
+    <div>
+        <?php _e( 'To display your logo, copy/paste this shortcode where you want:', 'holiday-logo-switcher' ); ?>&nbsp;<code><strong>[hls]</strong></code>
+    </div>
     <form method="post" action="options.php">
         <?php
         settings_fields( 'ls_logo_switcher' );
